@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Meals</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="recent">Recent</string>
+    <string name="random">Random</string>
+    <string name="meal_name">Meal Name</string>
+    <string name="category">Category</string>
+</resources>
