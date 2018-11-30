@@ -8,9 +8,11 @@ interface MainContract {
         fun showMessage(message: String)
         fun hideLoading()
         fun showLoading()
+        fun showRandom(meal: Meal)
     }
 
     interface Presenter {
         fun onUpdateList()
+        fun onGetRandom()
     }
 }
