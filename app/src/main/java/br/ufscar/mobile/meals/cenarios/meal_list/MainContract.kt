@@ -14,5 +14,6 @@ interface MainContract {
     interface Presenter {
         fun onUpdateList()
         fun onGetRandom()
+        fun onSearch(query: String?)
     }
 }
