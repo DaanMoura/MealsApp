@@ -13,21 +13,16 @@ import br.ufscar.mobile.meals.entidades.Meal
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFragmentInteractionListener {
-    override fun onMealInteraction(meal: Meal) {
-        val ingredients = getIngredients(meal)
-        val fragmentDetail = DetailsFragment.newInstance(meal, ingredients as ArrayList<Ingredient>)
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fmMaster, fragmentDetail)
-            .addToBackStack(null)
-            .commit()
-    }
 
     val presenter: MainContract.Presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn_random.setOnClickListener {
+            presenter.onGetRandom()
+        }
     }
 
     override fun showList(list: List<Meal>) {
@@ -53,6 +48,24 @@ class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFrag
 
     override fun showLoading() {
         loading.visibility = View.VISIBLE
+    }
+
+    override fun showRandom(meal: Meal) {
+        showMeal(meal)
+    }
+
+    override fun onMealInteraction(meal: Meal) {
+        showMeal(meal)
+    }
+
+    fun showMeal(meal: Meal) {
+        val ingredients = getIngredients(meal)
+        val fragmentDetail = DetailsFragment.newInstance(meal, ingredients as ArrayList<Ingredient>)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fmMaster, fragmentDetail)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun getIngredients(meal: Meal): List<Ingredient> {
