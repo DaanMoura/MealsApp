@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
+import br.ufscar.mobile.meals.module.GlideApp
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
@@ -41,9 +42,16 @@ class DetailsFragment : Fragment() {
 
 
         txt_title.text = meal.strMeal
+        txt_subtitle.text = "${meal.strCategory} | ${meal.strArea}"
         txt_instructions.text = meal.strInstructions
 
         activity?.let { that ->
+
+            GlideApp.with(that)
+                .load(meal.strMealThumb)
+                .centerCrop()
+                .into(img_meal_detail)
+
             val adapter = IngredientAdapter(ingredients)
             val layoutManager = LinearLayoutManager(that)
             rvIngedients.adapter = adapter
