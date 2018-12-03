@@ -1,5 +1,7 @@
 package br.ufscar.mobile.meals.cenarios.meal_list
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +16,9 @@ import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), MainContract.View,
+    MainFragment.onFragmentInteractionListener, DetailsFragment.onFragmentInteractionListener {
+
     val presenter: MainContract.Presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +50,17 @@ class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFrag
     override fun showLoading() {
         loading.visibility = View.VISIBLE
     }
+
+    override fun onButtonInteraction(site: String) {
+        val webpage: Uri = Uri.parse(site)
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        if(intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            showMessage("There is no url")
+        }
+    }
+
 
     override fun onMealInteraction(meal: Meal) {
         showMeal(meal)
