@@ -15,16 +15,11 @@ import br.ufscar.mobile.meals.entidades.Meal
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFragmentInteractionListener {
-
     val presenter: MainContract.Presenter = MainPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        btn_random.setOnClickListener {
-            presenter.onGetRandom()
-        }
     }
 
     override fun showList(list: List<Meal>) {
@@ -52,12 +47,16 @@ class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFrag
         loading.visibility = View.VISIBLE
     }
 
+    override fun onMealInteraction(meal: Meal) {
+        showMeal(meal)
+    }
+
     override fun showRandom(meal: Meal) {
         showMeal(meal)
     }
 
-    override fun onMealInteraction(meal: Meal) {
-        showMeal(meal)
+    override fun onRandomInteraction() {
+        presenter.onGetRandom()
     }
 
     fun showMeal(meal: Meal) {

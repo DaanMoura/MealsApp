@@ -44,6 +44,10 @@ class MainFragment : Fragment() {
             rvMeal.adapter = adapter
             rvMeal.layoutManager = layoutManager
         }
+
+        btn_random.setOnClickListener {
+            listener?.onRandomInteraction()
+        }
     }
 
     override fun onCreateView(
@@ -80,6 +84,7 @@ class MainFragment : Fragment() {
 
     interface onFragmentInteractionListener {
         fun onMealInteraction(meal: Meal)
+        fun onRandomInteraction()
     }
 
 
