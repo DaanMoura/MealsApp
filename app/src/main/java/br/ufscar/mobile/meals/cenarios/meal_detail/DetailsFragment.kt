@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.cenarios.meal_list.MainFragment
 import br.ufscar.mobile.meals.entidades.Ingredient
@@ -67,9 +68,8 @@ class DetailsFragment : Fragment() {
             rvIngedients.layoutManager = layoutManager
         }
 
-        if(meal.strSource.isEmpty()) {
-            btn_site.setBackgroundColor(resources.getColor(R.color.textSecondary, null))
-            btn_site.setTextColor(resources.getColor(R.color.textPrimary, null))
+        if(!meal.strSource.isEmpty()) {
+            btn_site.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0f)
         }
 
         btn_site.setOnClickListener {
