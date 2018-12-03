@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
+import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import br.ufscar.mobile.meals.R
@@ -131,6 +133,29 @@ class MainActivity : AppCompatActivity(), MainContract.View, MainFragment.onFrag
             ingredients.add(Ingredient(meal.strMeasure20, meal.strIngredient20))
         }
         return ingredients
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.action_bar, menu)
+
+        val searchItem = menu.findItem(R.id.search_bar)
+        val searchView = searchItem.actionView as SearchView
+        searchView.setQueryHint("Search for a meal!")
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                presenter.onSearch(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
+
+        return true
     }
 
 
