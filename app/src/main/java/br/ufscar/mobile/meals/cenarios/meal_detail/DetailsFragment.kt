@@ -1,7 +1,5 @@
 package br.ufscar.mobile.meals.cenarios.meal_detail
 
-
-import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
@@ -13,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import br.ufscar.mobile.meals.R
-import br.ufscar.mobile.meals.cenarios.meal_list.MainFragment
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
 import br.ufscar.mobile.meals.module.GlideApp
@@ -68,12 +65,12 @@ class DetailsFragment : Fragment() {
             rvIngedients.layoutManager = layoutManager
         }
 
-        if(!meal.strSource.isEmpty()) {
+        if(!meal.strSource.isNullOrEmpty()) {
             btn_site.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0f)
         }
 
         btn_site.setOnClickListener {
-            listener?.onButtonInteraction(meal.strSource)
+            listener?.onButtonInteraction(meal.strSource!!)
         }
 
     }
