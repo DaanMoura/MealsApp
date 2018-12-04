@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity(), MainContract.View,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar?.setLogo(R.drawable.ic_action_bowl_with_vegetables)
     }
 
     override fun showList(list: List<Meal>) {
