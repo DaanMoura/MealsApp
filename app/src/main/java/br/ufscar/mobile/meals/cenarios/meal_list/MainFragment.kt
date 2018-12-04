@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Meal
 import br.ufscar.mobile.meals.entidades.MealList
+import com.google.android.youtube.player.YouTubePlayerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 

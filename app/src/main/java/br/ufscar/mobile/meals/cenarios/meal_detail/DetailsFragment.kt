@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
+import br.ufscar.mobile.meals.fragments.MyYoutubeFragment
 import br.ufscar.mobile.meals.module.GlideApp
 import kotlinx.android.synthetic.main.fragment_details.*
 
@@ -73,6 +74,13 @@ class DetailsFragment : Fragment() {
             listener?.onButtonInteraction(meal.strSource!!)
         }
 
+        if(!meal.strYoutube.isNullOrEmpty()) {
+            youtubeplayerfragment.visibility = View.VISIBLE
+            img_meal_detail.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+            img_meal_detail.visibility = View.INVISIBLE
+            listener?.showYouTubePlayer(meal)
+        }
+
     }
 
     override fun onAttach(context: Context?) {
@@ -109,5 +117,7 @@ class DetailsFragment : Fragment() {
 
     interface onFragmentInteractionListener {
         fun onButtonInteraction(site: String)
+        fun showYouTubePlayer(meal: Meal)
+        fun closeYouTubePlayer()
     }
 }

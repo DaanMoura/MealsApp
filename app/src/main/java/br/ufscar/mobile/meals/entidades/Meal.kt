@@ -10,7 +10,7 @@ data class Meal(
     val strInstructions: String,
     val strMealThumb: String,
     val strTags: String,
-    val strYoutube: String,
+    val strYoutube: String?,
     val strIngredient1: String,
     val strIngredient2: String,
     val strIngredient3: String,
