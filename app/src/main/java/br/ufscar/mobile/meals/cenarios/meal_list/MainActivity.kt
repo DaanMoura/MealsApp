@@ -4,17 +4,26 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.cenarios.meal_detail.DetailsFragment
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
+import br.ufscar.mobile.meals.fragments.MyYoutubeFragment
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayerFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_details.*
+import kotlinx.android.synthetic.main.meal_item.*
 
 class MainActivity : AppCompatActivity(), MainContract.View,
     MainFragment.onFragmentInteractionListener, DetailsFragment.onFragmentInteractionListener {
@@ -84,6 +93,21 @@ class MainActivity : AppCompatActivity(), MainContract.View,
             .replace(R.id.fmMaster, fragmentDetail)
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun showYouTubePlayer(meal: Meal) {
+        showMessage("Carregando Vídeo")
+
+        val videoID = meal.strYoutube!!.substringAfter("watch?v=")
+        val youtubeFragment = MyYoutubeFragment.newInstance(videoID)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.youtubeplayerfragment, youtubeFragment)
+            .commit()
+    }
+
+    override fun closeYouTubePlayer() {
+
     }
 
     private fun getIngredients(meal: Meal): List<Ingredient> {
