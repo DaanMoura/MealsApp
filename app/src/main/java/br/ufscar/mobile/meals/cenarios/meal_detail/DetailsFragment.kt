@@ -13,7 +13,6 @@ import android.widget.LinearLayout
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
-import br.ufscar.mobile.meals.fragments.MyYoutubeFragment
 import br.ufscar.mobile.meals.module.GlideApp
 import kotlinx.android.synthetic.main.fragment_details.*
 
@@ -118,6 +117,5 @@ class DetailsFragment : Fragment() {
     interface onFragmentInteractionListener {
         fun onButtonInteraction(site: String)
         fun showYouTubePlayer(meal: Meal)
-        fun closeYouTubePlayer()
     }
 }

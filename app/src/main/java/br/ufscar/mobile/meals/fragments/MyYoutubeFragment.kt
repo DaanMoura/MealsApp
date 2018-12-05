@@ -6,21 +6,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-
 import br.ufscar.mobile.meals.R
-import br.ufscar.mobile.meals.cenarios.meal_list.MainFragment
-import br.ufscar.mobile.meals.entidades.Meal
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayerFragment
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
-import org.jetbrains.anko.find
 
 class MyYoutubeFragment : Fragment(), YouTubePlayer.OnInitializedListener {
-
-
 
     companion object {
         private val YOUTUBE_KEY = "AIzaSyAKFd7bGni_56INO4ksL7mi8ewXaUtWZog"
@@ -65,10 +57,6 @@ class MyYoutubeFragment : Fragment(), YouTubePlayer.OnInitializedListener {
         return fragmentYoutubeView
     }
 
-    override fun onPause() {
-        super.onPause()
-
-    }
 
     fun getVideoID(): String {
         val videoId = arguments?.getSerializable(MyYoutubeFragment.ARG_ID) as String?

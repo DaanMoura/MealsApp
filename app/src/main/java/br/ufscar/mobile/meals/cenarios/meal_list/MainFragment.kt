@@ -8,12 +8,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Meal
-import br.ufscar.mobile.meals.entidades.MealList
-import com.google.android.youtube.player.YouTubePlayerFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
