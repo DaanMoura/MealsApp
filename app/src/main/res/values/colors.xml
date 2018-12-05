@@ -6,6 +6,7 @@
     <color name="colorPrimaryLight">#FFCCBC</color>
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#757575</color>
+    <color name="textDark">#5e4805</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 

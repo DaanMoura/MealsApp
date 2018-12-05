@@ -1,16 +1,12 @@
 package br.ufscar.mobile.meals.cenarios.meal_detail
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Ingredient
-import br.ufscar.mobile.meals.entidades.Meal
-import br.ufscar.mobile.meals.module.GlideApp
 import kotlinx.android.synthetic.main.meal_ingedients.view.*
-import kotlinx.android.synthetic.main.meal_item.view.*
 
 class IngredientAdapter(val ingredients: List<Ingredient>) : RecyclerView.Adapter<IngredientAdapter.ViewHolder>() {
 

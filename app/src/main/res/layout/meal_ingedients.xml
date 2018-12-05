@@ -9,8 +9,9 @@
             android:text="@string/measure_placeholder"
             android:textColor="@color/textPrimary"
             android:paddingEnd="8dp"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:ignore="RtlCompat"/>
+            android:layout_height="wrap_content" tools:ignore="RtlCompat,RtlSymmetry"/>
 
     <TextView
             android:id="@+id/txt_ingredient"

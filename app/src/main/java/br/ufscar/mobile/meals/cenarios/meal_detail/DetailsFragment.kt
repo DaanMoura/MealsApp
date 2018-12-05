@@ -1,12 +1,15 @@
 package br.ufscar.mobile.meals.cenarios.meal_detail
 
-
+import android.annotation.TargetApi
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import br.ufscar.mobile.meals.R
 import br.ufscar.mobile.meals.entidades.Ingredient
 import br.ufscar.mobile.meals.entidades.Meal
@@ -27,6 +30,9 @@ class DetailsFragment : Fragment() {
             }
     }
 
+    var listener: DetailsFragment.onFragmentInteractionListener? = null
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +40,7 @@ class DetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,6 +65,37 @@ class DetailsFragment : Fragment() {
             rvIngedients.layoutManager = layoutManager
         }
 
+        if(!meal.strSource.isNullOrEmpty()) {
+            btn_site.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 0f)
+        }
+
+        btn_site.setOnClickListener {
+            listener?.onButtonInteraction(meal.strSource!!)
+        }
+
+        if(!meal.strYoutube.isNullOrEmpty()) {
+            youtubeplayerfragment.visibility = View.VISIBLE
+            img_meal_detail.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+            img_meal_detail.visibility = View.INVISIBLE
+            listener?.showYouTubePlayer(meal)
+        }
+
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if(context is DetailsFragment.onFragmentInteractionListener) {
+            listener = context
+        } else {
+            throw RuntimeException (
+                context.toString() + "must implement DetailsFragment.onFragmentInteractionListener"
+            )
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 
     private fun getIngredients(): List<Ingredient> {
@@ -74,5 +112,10 @@ class DetailsFragment : Fragment() {
             throw NullPointerException("Meal can not be null")
         }
         return meal
+    }
+
+    interface onFragmentInteractionListener {
+        fun onButtonInteraction(site: String)
+        fun showYouTubePlayer(meal: Meal)
     }
 }

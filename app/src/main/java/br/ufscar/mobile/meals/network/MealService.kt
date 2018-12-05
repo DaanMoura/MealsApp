@@ -1,6 +1,5 @@
 package br.ufscar.mobile.meals.network
 
-import br.ufscar.mobile.meals.entidades.Meal
 import br.ufscar.mobile.meals.entidades.MealList
 import retrofit2.Call
 import retrofit2.http.GET

@@ -10,7 +10,7 @@ data class Meal(
     val strInstructions: String,
     val strMealThumb: String,
     val strTags: String,
-    val strYoutube: String,
+    val strYoutube: String?,
     val strIngredient1: String,
     val strIngredient2: String,
     val strIngredient3: String,
@@ -51,5 +51,5 @@ data class Meal(
     val strMeasure18: String,
     val strMeasure19: String,
     val strMeasure20: String,
-    val strSource: String
+    val strSource: String?
 ):Serializable
